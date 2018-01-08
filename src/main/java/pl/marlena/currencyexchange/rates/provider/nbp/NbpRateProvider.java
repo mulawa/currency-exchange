@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class NbpRateProvider implements RateProvider {
 
-    private static final String NBP_CURRENCY_RATES_URL = "http://www.nbp.pl/kursy/xml/c243z171215.xml";
+    private static final String NBP_CURRENCY_RATES_URL ="http://api.nbp.pl/api/exchangerates/tables/c/today";//"http://www.nbp.pl/kursy/xml/c243z171215.xml";
     private RestTemplate restTemplate;
 
 
