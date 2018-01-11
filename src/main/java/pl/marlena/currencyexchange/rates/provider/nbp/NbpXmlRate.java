@@ -1,6 +1,5 @@
 package pl.marlena.currencyexchange.rates.provider.nbp;
 
-
 import lombok.Getter;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "pozycja")
 @Getter
-public class NbpRate {
+public class NbpXmlRate {
     @XmlElement(name = "nazwa_waluty")
     private String currency;
     @XmlElement(name = "kod_waluty")

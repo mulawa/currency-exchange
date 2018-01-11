@@ -8,7 +8,7 @@ import java.util.List;
 
 @XmlRootElement(name = "tabela_kursow")
 @Getter
-public class NbpRates {
+public class NbpXmlRates {
     @XmlElement(name = "numer_tabeli")
     private String number;
     @XmlElement(name = "data_notowania")
@@ -16,5 +16,5 @@ public class NbpRates {
     @XmlElement(name = "data_publikacji")
     private String publishedDate;
     @XmlElement(name = "pozycja")
-    private List<NbpRate> rates;
+    private List<NbpXmlRate> rates;
 }
