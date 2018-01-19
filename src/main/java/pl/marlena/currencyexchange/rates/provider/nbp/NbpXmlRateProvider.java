@@ -36,6 +36,7 @@ public class NbpXmlRateProvider implements RateProvider {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public Rate getExchangeRate(CurrencyUnit currencyTo) {
         return getRates().stream().filter(rate -> rate.getCurrencyTo().equals(currencyTo)).findFirst().get();
     }

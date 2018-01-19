@@ -20,16 +20,16 @@ import static pl.marlena.currencyexchange.rates.provider.nbp.DecimalUtil.dotSepa
 @Component
 @AllArgsConstructor
 @Slf4j
-public class NbpJsonRateProvider  implements RateProvider{
+public class NbpJsonRateProvider  implements RateProvider {
 
-    private static final String NBP_CURRENCY_RATES_URL ="http://api.nbp.pl/api/exchangerates/tables/c/today";
+    private static final String NBP_CURRENCY_RATES_URL = "http://api.nbp.pl/api/exchangerates/tables/c/last";
     private RestTemplate restTemplate;
 
     @Override
     public List<Rate> getRates() {
         ResponseEntity<NbpJsonRates[]> rates = restTemplate.getForEntity(NBP_CURRENCY_RATES_URL, NbpJsonRates[].class);
         return rates.getBody()[0].getRates().stream().map(rate -> Rate.builder()
-                .currencyFrom(CurrencyUnit.getInstance("PLN"))
+                .currencyFrom(CurrencyUnit.getInstance(rate.getCode()))
                 .currencyTo(CurrencyUnit.getInstance(rate.getCode()))
                 .buy(dotSeparatedToBigDecimal(rate.getBid()))
                 .sell(dotSeparatedToBigDecimal(rate.getAsk()))
@@ -37,9 +37,10 @@ public class NbpJsonRateProvider  implements RateProvider{
                 .collect(Collectors.toList());
     }
 
-
     public Rate getExchangeRate(CurrencyUnit currencyTo) {
         return getRates().stream().filter(rate -> rate.getCurrencyTo().equals(currencyTo)).findFirst().get();
     }
+
+
 
 }

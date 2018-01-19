@@ -13,4 +13,5 @@ public class Rate {
     private CurrencyUnit currencyTo;
     private BigDecimal buy;
     private BigDecimal sell;
+
 }

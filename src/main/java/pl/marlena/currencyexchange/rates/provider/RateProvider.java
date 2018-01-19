@@ -10,4 +10,5 @@ public interface RateProvider {
     List<Rate> getRates();
 
     Rate getExchangeRate(CurrencyUnit currencyUnit);
+
 }

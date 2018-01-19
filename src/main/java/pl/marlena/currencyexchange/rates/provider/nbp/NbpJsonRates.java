@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class NbpJsonRates {
 
+
     private String table;
     private String no;
     private String tradingDate;
